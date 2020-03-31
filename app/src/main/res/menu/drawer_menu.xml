@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_reservation"
+            android:icon="@drawable/ic_reservation"
+            android:title="Fa o rezervare" />
+        <item
+            android:id="@+id/nav_aboutus"
+            android:icon="@drawable/ic_aboutus"
+            android:title="Despre noi" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_gallery"
+            android:title="Galerie foto" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_contact"
+            android:title="Contact" />
+    </group>
+        <item android:title="ShareSection">
+            <menu>
+                <item
+                    android:id="@+id/nav_share_facebook"
+                    android:icon="@drawable/ic_contact"
+                    android:title="Share on Facebook" />
+                <item
+                    android:id="@+id/nav_share_instagram"
+                    android:icon="@drawable/ic_contact"
+                    android:title="Share on Instagram" />
+            </menu>
+        </item>
+
+
+
+
+</menu>
