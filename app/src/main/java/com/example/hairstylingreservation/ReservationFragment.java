@@ -46,8 +46,8 @@ public class ReservationFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                Log.d(TAG,"onDateSert: mm/dd/yyy: " + month + "/" + day + "/" + year);
-                String date = month + "/" + day + "/" + year;
+                // Log.d(TAG,"onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
+                String date = day + "/" + month + "/" + year;
                 dataDisp.setText(date);
             }
         };
