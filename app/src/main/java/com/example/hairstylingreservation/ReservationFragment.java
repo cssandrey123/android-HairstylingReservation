@@ -1,7 +1,6 @@
 package com.example.hairstylingreservation;
 
 import android.app.DatePickerDialog;
-import android.app.FragmentManager;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import java.util.Calendar;
 
 public class ReservationFragment extends Fragment {
@@ -23,7 +25,7 @@ public class ReservationFragment extends Fragment {
     private int year, month, day, hour, min;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_reservation,container,false);
 
         //afiseaza caseta de selectie a datee
@@ -68,15 +70,19 @@ public class ReservationFragment extends Fragment {
             });
         // butonul de continuare
         Button contBtn = view.findViewById(R.id.button);
+       //trimitere date
+        savedInstanceState.putInt("day", day);
+        this.setArguments(savedInstanceState);
 
         contBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-//              Intent i1 = new Intent(getContext(), AboutFragment.class);
-
-                //redirectionare la view-ul de selectie a frizurii
-                //+trimite datele introduse aici mai departe
+            AboutFragment destinatie = new AboutFragment(); //instanțiare fragmentul la care fac redirectionarea
+            FragmentManager manager = getFragmentManager(); //pentru a edita dispunerea fragmentelor
+            assert manager != null;
+            manager.beginTransaction() //incepe tranzacție
+                .replace(R.id.fragment_container, destinatie,destinatie.getTag()) //realizează înlocuirea
+                .commit(); //sfarsit de tranzacție
             }
         });
 
